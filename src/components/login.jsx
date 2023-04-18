@@ -1,5 +1,8 @@
+import { useOutletContext } from 'react-router-dom';
+
 const Login = () => {
-  return <div>Login</div>;
+  const { test } = useOutletContext();
+  return <div>{test}</div>;
 };
 
 export default Login;
