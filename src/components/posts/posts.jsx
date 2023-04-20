@@ -1,11 +1,10 @@
 import { useOutletContext } from 'react-router-dom';
-import PostFilter from './components/postFilter';
-import PostCards from './components/postCards';
+import PostFilter from './postsComponents/postFilter';
+import PostCards from './postsComponents/postCards';
 import './posts.css';
 
 const Posts = () => {
   const { posts } = useOutletContext();
-  console.log(posts);
 
   return (
     <div>
@@ -13,7 +12,7 @@ const Posts = () => {
       <div id="post-list">
         {posts.map((post) => {
           return (
-            <div key={posts._id}>
+            <div key={post._id}>
               <PostCards post={post} />
             </div>
           );

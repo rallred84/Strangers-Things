@@ -8,6 +8,7 @@ import Posts from './components/posts/posts';
 import Login from './components/login';
 import Register from './components/register';
 import Profile from './components/profile';
+import Post from './components/post/post';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register />,
+      },
+      {
+        path: '/posts/:postId',
+        element: <Post />,
       },
     ],
   },

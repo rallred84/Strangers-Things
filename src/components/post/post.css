@@ -1,0 +1,9 @@
+#single-post-view button {
+  display: block;
+}
+
+#single-post-view textarea {
+  width: 350px;
+  height: 100px;
+  resize: none;
+}

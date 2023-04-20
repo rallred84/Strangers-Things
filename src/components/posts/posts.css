@@ -24,3 +24,7 @@
   padding: 3px 5px;
   margin-top: 10px;
 }
+
+a {
+  text-decoration: none;
+}
