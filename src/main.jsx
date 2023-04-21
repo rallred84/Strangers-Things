@@ -6,7 +6,7 @@ import Root from './routes/Root';
 import Welcome from './components/welcome/welcome';
 import Posts from './components/posts/posts';
 import Login from './components/login';
-import Register from './components/register';
+import Register from './components/register/register';
 import Profile from './components/profile';
 import Post from './components/post/post';
 

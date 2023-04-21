@@ -1,5 +1,10 @@
 #single-post-view button {
   display: block;
+  background-color: inherit;
+  border: 1px solid #ed1c24;
+  color: #ed1c24;
+  padding: 3px 15px;
+  font-weight: bold;
 }
 
 #single-post-view textarea {

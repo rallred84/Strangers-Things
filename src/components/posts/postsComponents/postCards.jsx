@@ -9,7 +9,7 @@ const PostCards = ({ post }) => {
       <p>Item Description: {post.description}</p>
       <div className="card-buttons">
         <Link className="message-button" to={`/posts/${post._id}`}>
-          Send Message
+          See More
         </Link>
       </div>
     </div>
