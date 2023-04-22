@@ -8,6 +8,7 @@ const Root = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [token, setToken] = useState('');
 
   useEffect(() => {
     Promise.resolve(fetchPosts()).then((values) => {
@@ -29,6 +30,8 @@ const Root = () => {
               setPassword,
               confirmPassword,
               setConfirmPassword,
+              token,
+              setToken,
             }}
           />
         </div>

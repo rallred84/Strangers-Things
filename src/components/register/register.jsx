@@ -1,6 +1,7 @@
 import { useOutletContext } from 'react-router-dom';
 import './register.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { registerUser } from '../../api';
 
 const Register = () => {
   const { username } = useOutletContext();
@@ -10,17 +11,37 @@ const Register = () => {
   const { confirmPassword } = useOutletContext();
   const { setConfirmPassword } = useOutletContext();
   const [formError, setFormError] = useState('');
+  const { token } = useOutletContext();
+  const { setToken } = useOutletContext();
 
-  function handleRegister(e) {
+  async function handleRegister(e) {
     e.preventDefault();
 
     if (password !== confirmPassword) {
       setFormError('Passwords do not match');
       return;
     }
+    const result = await registerUser(username, password);
 
-    console.log(username + password + confirmPassword);
+    if (!result.success) {
+      setFormError(result.error.message);
+      return;
+    }
+
+    console.log(result);
+
+    setToken(result.data.token);
+    localStorage.setItem('token', token);
   }
+
+  useEffect(() => {
+    //Resets username and password values every time the page is loaded (This prevents values from the login page from auto filling the values of the register page)
+    setUsername('');
+    setPassword('');
+    setConfirmPassword('');
+
+    console.log(token);
+  }, [token]);
 
   return (
     <div>
@@ -44,7 +65,7 @@ const Register = () => {
           placeholder="Confirm Password"
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <button type="submit">Creat Your Account!</button>
+        <button type="submit">Create Your Account!</button>
         <div>{formError}</div>
       </form>
     </div>

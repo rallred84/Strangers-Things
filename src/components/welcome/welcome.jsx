@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom';
 import './welcome.css';
 
 const Welcome = () => {
+  const storedToken = localStorage.getItem('token');
+  console.log(storedToken);
+
   return (
     <div>
       <h1>Welcome to Stranger's Things</h1>
