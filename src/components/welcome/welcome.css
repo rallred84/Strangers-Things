@@ -1,3 +1,39 @@
-.blue {
+#welcome-screen-cover {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  background-color: rgba(74, 70, 70, 0.735);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#welcome-box {
+  background-color: white;
+  width: 500px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 3px solid black;
+  border-radius: 20px;
+}
+
+#welcome-box p {
+  margin: 10px;
+  width: 375px;
   text-align: center;
+}
+
+#welcome-box h3 {
+  margin: 10px;
+}
+
+#welcome-box a {
+  color: rgb(233, 10, 10);
+  font-weight: bold;
+  text-decoration: underline;
 }

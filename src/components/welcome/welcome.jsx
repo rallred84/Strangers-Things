@@ -1,21 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import './welcome.css';
+import { useEffect, useState } from 'react';
+import Posts from '../posts/posts';
+import LoginForm from '../login/loginComponents/loginForm';
+import WelcomeScreenCover from './welcomeComponents/welcomeScreenCover';
 
 const Welcome = () => {
-  const storedToken = localStorage.getItem('token');
-  console.log(storedToken);
+  const { isLoggedIn } = useOutletContext();
+  console.log(isLoggedIn);
 
   return (
     <div>
-      <h1>Welcome to Stranger's Things</h1>
-      <p>First time here?</p>
-      <Link to={'/register'}>
-        <h3>Register Now!</h3>
-      </Link>
-      <p>Returning Visitor?</p>
-      <Link to={'/login'}>
-        <h3>Log In</h3>
-      </Link>
+      {!isLoggedIn && <WelcomeScreenCover />}
+      <Posts />
     </div>
   );
 };

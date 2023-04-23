@@ -9,16 +9,20 @@ const Root = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [token, setToken] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     Promise.resolve(fetchPosts()).then((values) => {
       setPosts(values.data.posts);
     });
+    if (Boolean(localStorage.getItem('token'))) {
+      setIsLoggedIn(true);
+    } else setIsLoggedIn(false);
   }, []);
 
   return (
     <div id="app">
-      <Navbar />
+      <Navbar isLoggedIn={isLoggedIn} />
       <div id="main">
         <div id="content">
           <Outlet
@@ -32,6 +36,8 @@ const Root = () => {
               setConfirmPassword,
               token,
               setToken,
+              isLoggedIn,
+              setIsLoggedIn,
             }}
           />
         </div>

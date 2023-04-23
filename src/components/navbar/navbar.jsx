@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import logo from '../../assets/Strangers-Things-logo.png';
 import './navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn }) => {
   return (
     <div id="navbar">
       <div id="logo">
@@ -10,11 +10,13 @@ const Navbar = () => {
         <h4>Find SCARY good deals in your neighborhood!</h4>
       </div>
       <div id="links">
-        <Link to={'/'}>Home</Link>
         <Link to={'/posts'}>Posts</Link>
         <Link to={'/profile'}>Profile</Link>
-        <Link to={'/login'}>Login</Link>
-        <Link to={'/register'}>Register</Link>
+        {isLoggedIn ? (
+          <Link to={'/login'}>Logout</Link>
+        ) : (
+          <Link to={'/login'}>Login</Link>
+        )}
       </div>
     </div>
   );
