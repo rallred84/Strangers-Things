@@ -3,7 +3,7 @@ import './post.css';
 import { useState } from 'react';
 
 const Post = () => {
-  const { posts } = useOutletContext();
+  const { posts, isLoggedIn } = useOutletContext();
   const { postId } = useParams();
   const post = posts.find((p) => p._id === postId);
 
@@ -15,23 +15,25 @@ const Post = () => {
       <h3>Item Description: {post.description}</h3>
       <p>Seller: {post.author.username}</p>
       <p>Location: {post.location}</p>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          console.log(message);
-          setMessage('');
-        }}
-      >
-        <textarea
-          value={message}
-          type="text"
-          placeholder="Message Seller"
-          onChange={(e) => {
-            setMessage(e.target.value);
+      {isLoggedIn && (
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            console.log(message);
+            setMessage('');
           }}
-        />
-        <button type="submit">Send Message</button>
-      </form>
+        >
+          <textarea
+            value={message}
+            type="text"
+            placeholder="Message Seller"
+            onChange={(e) => {
+              setMessage(e.target.value);
+            }}
+          />
+          <button type="submit">Send Message</button>
+        </form>
+      )}
     </div>
   );
 };

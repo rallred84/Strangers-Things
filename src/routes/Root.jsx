@@ -5,9 +5,6 @@ import { useEffect, useState } from 'react';
 
 const Root = () => {
   const [posts, setPosts] = useState([]);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [token, setToken] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -22,18 +19,12 @@ const Root = () => {
 
   return (
     <div id="app">
-      <Navbar isLoggedIn={isLoggedIn} />
+      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <div id="main">
         <div id="content">
           <Outlet
             context={{
               posts,
-              username,
-              setUsername,
-              password,
-              setPassword,
-              confirmPassword,
-              setConfirmPassword,
               token,
               setToken,
               isLoggedIn,

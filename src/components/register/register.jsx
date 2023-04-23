@@ -4,15 +4,11 @@ import { useEffect, useState } from 'react';
 import { registerUser } from '../../api';
 
 const Register = () => {
-  const { username } = useOutletContext();
-  const { setUsername } = useOutletContext();
-  const { password } = useOutletContext();
-  const { setPassword } = useOutletContext();
-  const { confirmPassword } = useOutletContext();
-  const { setConfirmPassword } = useOutletContext();
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
   const [formError, setFormError] = useState('');
-  const { token } = useOutletContext();
-  const { setToken } = useOutletContext();
+  const { token, setToken } = useOutletContext();
 
   async function handleRegister(e) {
     e.preventDefault();

@@ -32,7 +32,8 @@
   margin: 10px;
 }
 
-#welcome-box a {
+#welcome-box a,
+.form-link {
   color: rgb(233, 10, 10);
   font-weight: bold;
   text-decoration: underline;

@@ -1,4 +1,4 @@
-import { useOutletContext } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import './login.css';
 import { useEffect, useState } from 'react';
 import { loginUser } from '../../api';
@@ -10,6 +10,12 @@ const Login = () => {
       <h2>Welcome back!</h2>
       <p>Please enter your username and password</p>
       <LoginForm />
+      <p>
+        Don't have a login?{' '}
+        <Link className="form-link" to="/register">
+          Register now!
+        </Link>
+      </p>
     </div>
   );
 };

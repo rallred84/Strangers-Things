@@ -3,8 +3,10 @@ import { useNavigate, useOutletContext } from 'react-router-dom';
 import { loginUser } from '../../../api';
 
 const LoginForm = () => {
-  const { username, setUsername, password, setPassword, setIsLoggedIn } =
-    useOutletContext();
+  const { setIsLoggedIn } = useOutletContext();
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+
   const [loginError, setLoginError] = useState('');
   const navigate = useNavigate();
 
