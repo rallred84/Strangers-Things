@@ -12,6 +12,7 @@ const Root = () => {
   useEffect(() => {
     Promise.resolve(fetchPosts()).then((values) => {
       setAllPosts(values.data.posts);
+      setDisplayedPosts(values.data.posts);
     });
     if (Boolean(localStorage.getItem('token'))) {
       setIsLoggedIn(true);
