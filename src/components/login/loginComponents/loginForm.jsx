@@ -18,8 +18,6 @@ const LoginForm = () => {
 
   async function handleLogin(e) {
     e.preventDefault();
-    console.log(username + password);
-
     const result = await loginUser(username, password);
 
     if (!result.success) {

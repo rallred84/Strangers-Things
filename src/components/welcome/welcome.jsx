@@ -7,7 +7,6 @@ import WelcomeScreenCover from './welcomeComponents/welcomeScreenCover';
 
 const Welcome = () => {
   const { isLoggedIn } = useOutletContext();
-  console.log(isLoggedIn);
 
   return (
     <div>

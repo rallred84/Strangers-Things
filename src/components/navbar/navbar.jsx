@@ -16,6 +16,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
         <Link to={'/profile'}>Profile</Link>
         {isLoggedIn ? (
           <Link
+            to="/"
             onClick={() => {
               setIsLoggedIn(false);
               localStorage.removeItem('token');

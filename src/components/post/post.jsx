@@ -3,9 +3,9 @@ import './post.css';
 import { useState } from 'react';
 
 const Post = () => {
-  const { posts, isLoggedIn } = useOutletContext();
+  const { displayedPosts, isLoggedIn } = useOutletContext();
   const { postId } = useParams();
-  const post = posts.find((p) => p._id === postId);
+  const post = displayedPosts.find((p) => p._id === postId);
 
   const [message, setMessage] = useState('');
 

@@ -4,13 +4,14 @@ import { fetchPosts } from '../api';
 import { useEffect, useState } from 'react';
 
 const Root = () => {
-  const [posts, setPosts] = useState([]);
+  const [allPosts, setAllPosts] = useState([]);
+  const [displayedPosts, setDisplayedPosts] = useState([]);
   const [token, setToken] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     Promise.resolve(fetchPosts()).then((values) => {
-      setPosts(values.data.posts);
+      setAllPosts(values.data.posts);
     });
     if (Boolean(localStorage.getItem('token'))) {
       setIsLoggedIn(true);
@@ -24,7 +25,10 @@ const Root = () => {
         <div id="content">
           <Outlet
             context={{
-              posts,
+              allPosts,
+              setAllPosts,
+              displayedPosts,
+              setDisplayedPosts,
               token,
               setToken,
               isLoggedIn,
