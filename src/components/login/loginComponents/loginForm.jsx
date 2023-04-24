@@ -3,7 +3,7 @@ import { useNavigate, useOutletContext } from 'react-router-dom';
 import { loginUser } from '../../../api';
 
 const LoginForm = () => {
-  const { setIsLoggedIn } = useOutletContext();
+  const { setIsLoggedIn, setToken } = useOutletContext();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -25,6 +25,7 @@ const LoginForm = () => {
       return;
     }
     localStorage.setItem('token', result.data.token);
+    setToken(result.data.token);
     setIsLoggedIn(true);
     navigate('/posts');
   }

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/Strangers-Things-logo.png';
 import './navbar.css';
 
-const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
+const Navbar = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
   return (
     <div id="navbar">
       <div id="logo">
@@ -12,7 +12,9 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
         <h4>Find SCARY good deals in your neighborhood!</h4>
       </div>
       <div id="links">
-        <Link to={'/posts'}>View Listings</Link>
+        <Link to={'/posts'} onClick={() => setDisplayedPosts(allPosts)}>
+          View Listings
+        </Link>
         {isLoggedIn && <Link to={'/profile'}>Profile</Link>}
         {isLoggedIn ? (
           <Link
@@ -20,6 +22,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
             onClick={() => {
               setIsLoggedIn(false);
               localStorage.removeItem('token');
+              setToken('');
             }}
           >
             Logout

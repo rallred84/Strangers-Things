@@ -4,8 +4,8 @@ import PostCards from './postsComponents/postCards';
 import './posts.css';
 
 const Posts = () => {
-  const { allPosts, displayedPosts, setDisplayedPosts } = useOutletContext();
-
+  const { allPosts, displayedPosts, setDisplayedPosts, token } =
+    useOutletContext();
   return (
     <div>
       <PostFilter

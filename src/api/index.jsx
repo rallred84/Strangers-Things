@@ -1,5 +1,3 @@
-import { useOutletContext } from 'react-router-dom';
-
 const COHORT_NAME = '2301-ftb-mt-web-pt';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
@@ -48,6 +46,21 @@ export async function loginUser(username, password) {
           password: password,
         },
       }),
+    });
+    const result = await response.json();
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export async function fetchMyProfile(token) {
+  try {
+    const response = await fetch(`${BASE_URL}/users/me`, {
+      headers: {
+        'Content-Type': 'application/JSON',
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
