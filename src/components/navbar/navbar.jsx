@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import logo from '../../assets/Strangers-Things-logo.png';
 import './navbar.css';
+import ViewListingsLink from './navbarComponents/viewListingsLink';
+import ProfileLink from './navbarComponents/profileLink';
+import LoginLogoutLink from './navbarComponents/loginLogoutLink';
+import CreatePostLink from './navbarComponents/createPostLink';
 
 const Navbar = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
   return (
@@ -12,24 +16,14 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
         <h4>Find SCARY good deals in your neighborhood!</h4>
       </div>
       <div id="links">
-        <Link to={'/posts'} onClick={() => setDisplayedPosts(allPosts)}>
-          View Listings
-        </Link>
-        {isLoggedIn && <Link to={'/profile'}>Profile</Link>}
-        {isLoggedIn ? (
-          <Link
-            to="/"
-            onClick={() => {
-              setIsLoggedIn(false);
-              localStorage.removeItem('token');
-              setToken('');
-            }}
-          >
-            Logout
-          </Link>
-        ) : (
-          <Link to={'/login'}>Login/Register</Link>
-        )}
+        <ViewListingsLink />
+        <CreatePostLink isLoggedIn={isLoggedIn} />
+        <ProfileLink isLoggedIn={isLoggedIn} />
+        <LoginLogoutLink
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          setToken={setToken}
+        />
       </div>
     </div>
   );

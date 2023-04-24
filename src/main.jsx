@@ -9,6 +9,7 @@ import Login from './components/login/login';
 import Register from './components/register/register';
 import Profile from './components/profile/profile';
 import Post from './components/post/post';
+import CreatePost from './components/createPost/createPost';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         element: <Profile />,
+      },
+      {
+        path: '/create',
+        element: <CreatePost />,
       },
       {
         path: '/login',
