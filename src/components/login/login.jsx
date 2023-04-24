@@ -1,7 +1,5 @@
-import { Link, useOutletContext } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './login.css';
-import { useEffect, useState } from 'react';
-import { loginUser } from '../../api';
 import LoginForm from './loginComponents/loginForm';
 
 const Login = () => {

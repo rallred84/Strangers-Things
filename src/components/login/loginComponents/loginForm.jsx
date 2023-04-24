@@ -4,8 +4,8 @@ import { loginUser } from '../../../api';
 
 const LoginForm = () => {
   const { setIsLoggedIn } = useOutletContext();
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const [loginError, setLoginError] = useState('');
   const navigate = useNavigate();

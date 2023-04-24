@@ -1,4 +1,4 @@
-import { Link, useOutletContext } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/Strangers-Things-logo.png';
 import './navbar.css';
 
@@ -12,8 +12,8 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
         <h4>Find SCARY good deals in your neighborhood!</h4>
       </div>
       <div id="links">
-        <Link to={'/posts'}>Posts</Link>
-        <Link to={'/profile'}>Profile</Link>
+        <Link to={'/posts'}>View Listings</Link>
+        {isLoggedIn && <Link to={'/profile'}>Profile</Link>}
         {isLoggedIn ? (
           <Link
             to="/"

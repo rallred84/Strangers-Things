@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import Post from '../../post/post';
 
 const PostCards = ({ post }) => {
   return (

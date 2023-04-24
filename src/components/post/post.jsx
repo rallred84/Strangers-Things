@@ -1,4 +1,4 @@
-import { Link, useOutletContext, useParams } from 'react-router-dom';
+import { useOutletContext, useParams } from 'react-router-dom';
 import './post.css';
 import { useState } from 'react';
 
