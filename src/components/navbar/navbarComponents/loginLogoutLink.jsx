@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
 
-const LoginLogoutLink = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
+const LoginLogoutLink = ({
+  isLoggedIn,
+  setIsLoggedIn,
+  setToken,
+  setMyProfile,
+}) => {
   //prettier-ignore
   return (isLoggedIn)
    ? (
@@ -10,6 +15,7 @@ const LoginLogoutLink = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
         setIsLoggedIn(false);
         localStorage.removeItem('token');
         setToken('');
+        setMyProfile({})
       }}>Logout</Link>)
    : (
     <Link to={'/login'}>Login/Register</Link>

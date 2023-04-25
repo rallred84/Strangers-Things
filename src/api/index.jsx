@@ -68,3 +68,36 @@ export async function fetchMyProfile(token) {
     console.error(err);
   }
 }
+
+export async function createNewPost(
+  itemName,
+  itemDescription,
+  itemPrice,
+  itemLocation,
+  willDeliverItem,
+  token
+) {
+  try {
+    const response = await fetch(`${BASE_URL}/posts`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        post: {
+          title: itemName,
+          description: itemDescription,
+          price: itemPrice,
+          location: itemLocation,
+          willDeliver: willDeliverItem,
+        },
+      }),
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+}

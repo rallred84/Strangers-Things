@@ -1,0 +1,19 @@
+#create-post-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+#create-post-form > input {
+  margin-bottom: 5px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#create-post-form button {
+  flex-grow: 1;
+}

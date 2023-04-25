@@ -49,6 +49,7 @@ const Root = () => {
               isLoggedIn,
               setIsLoggedIn,
               myProfile,
+              setMyProfile,
             }}
           />
         </div>
