@@ -1,20 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
-import { loginUser } from '../../../api';
+import { fetchMyProfile, loginUser } from '../../../api';
 
 const LoginForm = () => {
-  const { setIsLoggedIn, setToken } = useOutletContext();
+  const { setMyProfile, setToken } = useOutletContext();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const [loginError, setLoginError] = useState('');
   const navigate = useNavigate();
-
-  useEffect(() => {
-    //Resets username and password values every time the page is loaded (This prevents values from the register page from auto filling the values of the login page)
-    setUsername('');
-    setPassword('');
-  }, []);
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -26,7 +20,11 @@ const LoginForm = () => {
     }
     localStorage.setItem('token', result.data.token);
     setToken(result.data.token);
-    setIsLoggedIn(true);
+    async () => {
+      const result = await fetchMyProfile(token);
+      setMyProfile(result);
+      console.log('myProfile');
+    };
     navigate('/posts');
   }
 

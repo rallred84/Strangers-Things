@@ -2,13 +2,18 @@ import { useOutletContext } from 'react-router-dom';
 import './welcome.css';
 import Posts from '../posts/posts';
 import WelcomeScreenCover from './welcomeComponents/welcomeScreenCover';
+import { useEffect } from 'react';
 
 const Welcome = () => {
-  const { isLoggedIn } = useOutletContext();
+  const { myProfile } = useOutletContext();
+
+  useEffect(() => {
+    console.log(myProfile);
+  }, []);
 
   return (
     <div>
-      {!isLoggedIn && <WelcomeScreenCover />}
+      {!myProfile._id && <WelcomeScreenCover />}
       <Posts />
     </div>
   );

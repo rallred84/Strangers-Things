@@ -1,24 +1,19 @@
 import { Link } from 'react-router-dom';
 
-const LoginLogoutLink = ({
-  isLoggedIn,
-  setIsLoggedIn,
-  setToken,
-  setMyProfile,
-}) => {
-  //prettier-ignore
-  return (isLoggedIn)
-   ? (
+const LoginLogoutLink = ({ setToken, myProfile, setMyProfile }) => {
+  return myProfile._id ? (
     <Link
-      to="/"
+      to={'/'}
       onClick={() => {
-        setIsLoggedIn(false);
         localStorage.removeItem('token');
+        setMyProfile({});
         setToken('');
-        setMyProfile({})
-      }}>Logout</Link>)
-   : (
-    <Link to={'/login'}>Login/Register</Link>
+      }}
+    >
+      Logout
+    </Link>
+  ) : (
+    <Link to={'/register'}>Login/Register</Link>
   );
 };
 

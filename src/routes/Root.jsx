@@ -7,7 +7,6 @@ const Root = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [displayedPosts, setDisplayedPosts] = useState([]);
   const [token, setToken] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [myProfile, setMyProfile] = useState({});
 
   useEffect(() => {
@@ -15,10 +14,9 @@ const Root = () => {
       setAllPosts(values.data.posts);
       setDisplayedPosts(values.data.posts);
     });
-    if (Boolean(localStorage.getItem('token'))) {
-      setIsLoggedIn(true);
+    if (localStorage.getItem('token')) {
       setToken(localStorage.getItem('token'));
-    } else setIsLoggedIn(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -32,9 +30,10 @@ const Root = () => {
   return (
     <div id="app">
       <Navbar
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
+        myProfile={myProfile}
         setToken={setToken}
+        setDisplayedPosts={setDisplayedPosts}
+        allPosts={allPosts}
       />
       <div id="main">
         <div id="content">
@@ -46,8 +45,6 @@ const Root = () => {
               setDisplayedPosts,
               token,
               setToken,
-              isLoggedIn,
-              setIsLoggedIn,
               myProfile,
               setMyProfile,
             }}

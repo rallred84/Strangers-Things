@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-const ProfileLink = ({ isLoggedIn }) => {
+const ProfileLink = ({ myProfile }) => {
   //prettier-ignore
-  return (isLoggedIn) 
+  return (myProfile._id) 
   && <Link to={'/profile'}>Profile</Link>;
 };
 

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const ViewListingsLink = () => {
+const ViewListingsLink = ({ setDisplayedPosts, allPosts }) => {
   return (
     <Link to={'/posts'} onClick={() => setDisplayedPosts(allPosts)}>
       View Listings

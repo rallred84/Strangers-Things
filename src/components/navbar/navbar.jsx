@@ -6,7 +6,7 @@ import ProfileLink from './navbarComponents/profileLink';
 import LoginLogoutLink from './navbarComponents/loginLogoutLink';
 import CreatePostLink from './navbarComponents/createPostLink';
 
-const Navbar = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
+const Navbar = ({ myProfile, setToken, setDisplayedPosts, allPosts }) => {
   return (
     <div id="navbar">
       <div id="logo">
@@ -16,15 +16,17 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
         <h4>Find SCARY good deals in your neighborhood!</h4>
       </div>
       <div id="links">
-        <ViewListingsLink />
-        <CreatePostLink isLoggedIn={isLoggedIn} />
-        <ProfileLink isLoggedIn={isLoggedIn} />
-        <LoginLogoutLink
-          isLoggedIn={isLoggedIn}
-          setIsLoggedIn={setIsLoggedIn}
-          setToken={setToken}
+        <ViewListingsLink
+          setDisplayedPosts={setDisplayedPosts}
+          allPosts={allPosts}
         />
+        <CreatePostLink myProfile={myProfile} />
+        <ProfileLink myProfile={myProfile} />
+        <LoginLogoutLink myProfile={myProfile} setToken={setToken} />
       </div>
+      {myProfile._id && (
+        <div id="username-message">Logged in as {myProfile.username}</div>
+      )}
     </div>
   );
 };
