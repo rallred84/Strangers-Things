@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const PostCards = ({ post }) => {
   return (
-    <div className="card">
+    <div className={post.isAuthor ? 'card users-post' : 'card'}>
       <h3 className="post-title">{post.title}</h3>
       <p>Seller: {post.author.username}</p>
       <p>Price: {post.price}</p>

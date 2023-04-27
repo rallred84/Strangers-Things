@@ -1,9 +1,17 @@
 const COHORT_NAME = '2301-ftb-mt-web-pt';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
-export async function fetchPosts() {
+export async function fetchPosts(myProfile, token) {
   try {
-    const response = await fetch(`${BASE_URL}/posts`);
+    const response = !myProfile._id
+      ? await fetch(`${BASE_URL}/posts`)
+      : await fetch(`${BASE_URL}/posts`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        });
     const data = await response.json();
     return data;
   } catch (error) {
@@ -91,6 +99,28 @@ export async function createNewPost(
           price: itemPrice,
           location: itemLocation,
           willDeliver: willDeliverItem,
+        },
+      }),
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export async function sendMessage(postId, token, messageContent) {
+  try {
+    const response = await fetch(`${BASE_URL}/posts/${postId}/messages`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        message: {
+          content: `${messageContent}`,
         },
       }),
     });

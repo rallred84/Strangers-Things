@@ -10,18 +10,11 @@ const Root = () => {
   const [myProfile, setMyProfile] = useState({});
 
   useEffect(() => {
-    (async () => {
-      const postValues = await fetchPosts();
-      setAllPosts(postValues.data.posts);
-      setDisplayedPosts(postValues.data.posts);
-    })();
-
+    //If Token exists in local storage, set it to state
     if (localStorage.getItem('token')) {
       setToken(localStorage.getItem('token'));
     }
-  }, []);
-
-  useEffect(() => {
+    //If there is a token value, fetch user profile and save to state
     if (token !== '') {
       (async () => {
         const profileValues = await fetchMyProfile(token);
@@ -29,6 +22,19 @@ const Root = () => {
       })();
     }
   }, [token]);
+
+  useEffect(() => {
+    //Fetch Posts
+    (async () => {
+      const postValues =
+        token === ''
+          ? await fetchPosts(myProfile)
+          : await fetchPosts(myProfile, token);
+
+      setAllPosts(postValues.data.posts);
+      setDisplayedPosts(postValues.data.posts);
+    })();
+  }, [myProfile]);
 
   return (
     <div id="app">

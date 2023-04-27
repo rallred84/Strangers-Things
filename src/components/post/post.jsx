@@ -1,13 +1,21 @@
 import { useOutletContext, useParams } from 'react-router-dom';
 import './post.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { sendMessage } from '../../api';
 
 const Post = () => {
-  const { displayedPosts, myProfile } = useOutletContext();
+  const { displayedPosts, myProfile, token } = useOutletContext();
   const { postId } = useParams();
   const post = displayedPosts.find((p) => p._id === postId);
 
-  const [message, setMessage] = useState('');
+  const [messageContent, setMessageContent] = useState('');
+
+  const handleSubmit = async (e, postId, token, messageContent) => {
+    e.preventDefault();
+    const result = await sendMessage(postId, token, messageContent);
+    console.log(result);
+    setMessageContent('');
+  };
 
   return (
     <div id="single-post-view">
@@ -22,17 +30,15 @@ const Post = () => {
       {myProfile._id && (
         <form
           onSubmit={(e) => {
-            e.preventDefault();
-            console.log(message);
-            setMessage('');
+            handleSubmit(e, postId, token, messageContent);
           }}
         >
           <textarea
-            value={message}
+            value={messageContent}
             type="text"
             placeholder="Message Seller"
             onChange={(e) => {
-              setMessage(e.target.value);
+              setMessageContent(e.target.value);
             }}
           />
           <button type="submit">Send Message</button>
