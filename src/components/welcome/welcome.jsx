@@ -7,10 +7,6 @@ import { useEffect } from 'react';
 const Welcome = () => {
   const { myProfile } = useOutletContext();
 
-  useEffect(() => {
-    console.log(myProfile);
-  }, []);
-
   return (
     <div>
       {!myProfile._id && <WelcomeScreenCover />}

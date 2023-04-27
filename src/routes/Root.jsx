@@ -10,10 +10,12 @@ const Root = () => {
   const [myProfile, setMyProfile] = useState({});
 
   useEffect(() => {
-    Promise.resolve(fetchPosts()).then((values) => {
-      setAllPosts(values.data.posts);
-      setDisplayedPosts(values.data.posts);
-    });
+    (async () => {
+      const postValues = await fetchPosts();
+      setAllPosts(postValues.data.posts);
+      setDisplayedPosts(postValues.data.posts);
+    })();
+
     if (localStorage.getItem('token')) {
       setToken(localStorage.getItem('token'));
     }
@@ -21,9 +23,10 @@ const Root = () => {
 
   useEffect(() => {
     if (token !== '') {
-      Promise.resolve(fetchMyProfile(token)).then((values) => {
-        setMyProfile(values);
-      });
+      (async () => {
+        const profileValues = await fetchMyProfile(token);
+        setMyProfile(profileValues);
+      })();
     }
   }, [token]);
 

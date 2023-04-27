@@ -30,15 +30,6 @@ const Register = () => {
     localStorage.setItem('token', token);
   }
 
-  useEffect(() => {
-    //Resets username and password values every time the page is loaded (This prevents values from the login page from auto filling the values of the register page)
-    setUsername('');
-    setPassword('');
-    setConfirmPassword('');
-
-    console.log(token);
-  }, [token]);
-
   return (
     <div>
       <h2>Register Your Account to Get Started</h2>
