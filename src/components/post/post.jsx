@@ -8,6 +8,8 @@ const Post = () => {
   const { postId } = useParams();
   const post = displayedPosts.find((p) => p._id === postId);
 
+  console.log(post);
+
   const [messageContent, setMessageContent] = useState('');
 
   const handleSubmit = async (e, postId, token, messageContent) => {
@@ -15,6 +17,12 @@ const Post = () => {
     const result = await sendMessage(postId, token, messageContent);
     console.log(result);
     setMessageContent('');
+  };
+
+  const handleMessageSubmit = async (e, postId, token, messageContent) => {
+    e.preventDefault();
+    const result = await sendMessage(postId, token, messageContent);
+    console.log(result);
   };
 
   return (
@@ -27,7 +35,7 @@ const Post = () => {
       <p>
         {'('}Seller will {!post.willDeliver && 'not'} deliver{')'}{' '}
       </p>
-      {myProfile._id && (
+      {myProfile._id && !post.isAuthor && (
         <form
           onSubmit={(e) => {
             handleSubmit(e, postId, token, messageContent);
@@ -44,6 +52,23 @@ const Post = () => {
           <button type="submit">Send Message</button>
         </form>
       )}
+      {post.messages[0] &&
+        post.messages.map((m) => {
+          const timeStamp = new Date(m.createdAt);
+          const messageId = m._id;
+          const [replyValue, setReplyValue] = useState('');
+          return (
+            <div className="post-message" key={m._id}>
+              <div className="message-content">
+                <p>{m.content}</p>
+              </div>
+              <div className="message-info">
+                <p>-{m.fromUser.username}</p>
+                <p>{timeStamp.toString().slice(4, 21)}</p>
+              </div>
+            </div>
+          );
+        })}
     </div>
   );
 };
