@@ -1,0 +1,14 @@
+.profile-body {
+  display: flex;
+}
+
+.profile-body > div {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-body h4,
+.profile-body p {
+  flex-wrap: wrap;
+}
