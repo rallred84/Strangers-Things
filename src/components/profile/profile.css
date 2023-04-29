@@ -1,14 +1,76 @@
-.profile-body {
-  display: flex;
-}
-
-.profile-body > div {
+#profile {
+  height: 100%;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-.profile-body h4,
-.profile-body p {
-  flex-wrap: wrap;
+.profile-body {
+  display: flex;
+  height: 100%;
+}
+
+.profile-column {
+  flex: 1 1 0px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.profile-column-body {
+  box-shadow: 2px 2px 5px gray;
+  overflow: auto;
+  flex: 1 1 0px;
+  background-color: white;
+  margin: 10px 7px;
+}
+
+.message-type-select {
+  display: flex;
+}
+
+.message-label-active:first-child {
+  border-right: 1px solid rgb(213, 213, 213);
+}
+
+.message-label-active,
+.message-label-inactive {
+  flex: 1 1 0px;
+  text-align: center;
+  font-weight: bold;
+  padding: 0 15px;
+  box-shadow: 2px 2px 5px gray;
+}
+
+.message-label p {
+  border-radius: 5 px;
+  margin: 7px;
+}
+
+.message-label-active {
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: underline;
+  background-color: white;
+}
+
+.message-label-inactive {
+  font-weight: normal;
+  background-color: rgb(244, 241, 240);
+}
+
+.profile-post-link {
+  padding: 5px 15px;
+  overflow: auto;
+  border: 1px solid lightgray;
+  margin: 5px 10px;
+}
+
+.profile-post-link:first-child {
+  margin-top: 10px;
+}
+
+.profile-post-link:hover,
+.message-label:hover {
+  cursor: pointer;
 }

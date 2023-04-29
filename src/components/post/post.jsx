@@ -13,7 +13,6 @@ const Post = () => {
   const handleSubmit = async (e, postId, token, messageContent) => {
     e.preventDefault();
     const result = await sendMessage(postId, token, messageContent);
-    console.log(result);
     setMessageContent('');
   };
 
