@@ -131,3 +131,37 @@ export async function sendMessage(postId, token, messageContent) {
     console.error(err);
   }
 }
+
+export async function updatePost(
+  postToUpdate,
+  token,
+  itemName,
+  itemDescription,
+  itemPrice,
+  itemLocation,
+  willDeliverItem
+) {
+  try {
+    const response = await fetch(`${BASE_URL}/posts/${postToUpdate}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        post: {
+          title: itemName,
+          description: itemDescription,
+          price: itemPrice,
+          location: itemLocation,
+          willDeliver: willDeliverItem,
+        },
+      }),
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+}

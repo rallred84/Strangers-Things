@@ -2,6 +2,8 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 #app {
@@ -19,7 +21,7 @@
 }
 
 #content {
-  width: 800px;
+  width: 1000px;
   background-color: rgb(228, 222, 222);
   margin: 15px;
   border: 2px solid black;

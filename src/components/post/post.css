@@ -1,13 +1,28 @@
-#single-post-view button {
+.message-submit-button,
+.author-options-button {
   display: block;
   background-color: inherit;
-  border: 1px solid #ed1c24;
-  color: #ed1c24;
   padding: 3px 15px;
   font-weight: bold;
 }
 
-#single-post-view textarea {
+.message-submit-button {
+  border: 1px solid #ed1c24;
+  color: #ed1c24;
+}
+
+.edit {
+  border: 2px solid green;
+  color: green;
+}
+
+.delete {
+  border: 2px solid red;
+  color: red;
+  margin-left: 10px;
+}
+
+.message-textbox {
   width: 350px;
   height: 100px;
   resize: none;
@@ -27,4 +42,66 @@
 
 .message-content {
   font-size: 20px;
+}
+
+#author-options {
+  display: flex;
+}
+
+#edit-post-form {
+  width: 950px;
+}
+
+.single-post-data,
+.post-inputs {
+  font-size: 18px;
+}
+
+.post-title {
+  text-decoration: underline;
+  font-size: 28px;
+  font-weight: bold;
+  width: 100%;
+}
+
+.post-description {
+  font-size: 24px;
+  font-weight: bold;
+  width: 100%;
+}
+
+.description-edit {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-attribute {
+  font-weight: bold;
+  margin-right: 5px 5px 0 0;
+}
+
+.post-inputs {
+  flex-grow: 1;
+}
+
+.edit-section {
+  display: flex;
+}
+
+#edit-button,
+#edit-cancel-button {
+  background-color: inherit;
+  padding: 5px 10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 10px 0 0;
+}
+
+#edit-button {
+  color: green;
+  border: 2px solid green;
+}
+#edit-cancel-button {
+  color: red;
+  border: 2px solid red;
 }

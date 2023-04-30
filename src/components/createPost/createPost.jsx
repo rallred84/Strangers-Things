@@ -29,7 +29,7 @@ const CreatePost = () => {
   }
 
   return (
-    <>
+    <div>
       <h3>Create Your Own Listing</h3>
       <p>What are you wanting to sell?</p>
       <form id="create-post-form" onSubmit={(e) => handleCreatePost(e)}>
@@ -60,24 +60,20 @@ const CreatePost = () => {
           placeholder="Item Location"
           onChange={(e) => setItemLocation(e.target.value)}
         />
-        <div className="checkbox">
+        <div className="will-deliver">
           <label htmlFor="will-deliver">Will Deliver?</label>
-          <input
-            id="will-deliver"
-            type="checkbox"
-            onChange={() => {
-              if (!willDeliverItem) {
-                setWillDeliverItem(true);
-              }
-              if (willDeliverItem) {
-                setWillDeliverItem(false);
-              }
-            }}
-          />
+          <select
+            name="will-deliver"
+            defaultValue={false}
+            onChange={(e) => setWillDeliverItem(e.target.value)}
+          >
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+          </select>
           <button>Create Your Listing!</button>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 
