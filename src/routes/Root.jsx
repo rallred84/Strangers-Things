@@ -21,7 +21,8 @@ const Root = () => {
         setMyProfile(profileValues);
       })();
     }
-  }, [token, allPosts]);
+    console.log('test');
+  }, [token]);
 
   useEffect(() => {
     //Fetch Posts
