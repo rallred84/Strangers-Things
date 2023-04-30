@@ -21,7 +21,6 @@ const Root = () => {
         setMyProfile(profileValues);
       })();
     }
-    console.log('test');
   }, [token]);
 
   useEffect(() => {

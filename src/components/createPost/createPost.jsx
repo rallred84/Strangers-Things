@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import './createPost.css';
-import { useOutletContext } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import { createNewPost } from '../../api';
+import { fetchPosts } from '../../api';
 
 const CreatePost = () => {
   const [itemName, setItemName] = useState('');
@@ -9,16 +10,13 @@ const CreatePost = () => {
   const [itemPrice, setItemPrice] = useState('');
   const [itemLocation, setItemLocation] = useState('');
   const [willDeliverItem, setWillDeliverItem] = useState(false);
-  const { token } = useOutletContext();
+  const { token, myProfile, setDisplayedPosts } = useOutletContext();
 
-  function handleCreatePost(e) {
+  const navigate = useNavigate();
+
+  async function handleCreatePost(e) {
     e.preventDefault();
-    console.log('create post' + willDeliverItem.toString());
-    setItemName('');
-    setItemDescription('');
-    setItemPrice('');
-    setItemLocation('');
-    createNewPost(
+    const result = await createNewPost(
       itemName,
       itemDescription,
       itemPrice,
@@ -26,6 +24,9 @@ const CreatePost = () => {
       willDeliverItem,
       token
     );
+    const newPostValues = await fetchPosts(myProfile, token);
+    setDisplayedPosts(newPostValues.data.posts);
+    navigate(`/posts/${result.data.post._id}`);
   }
 
   return (

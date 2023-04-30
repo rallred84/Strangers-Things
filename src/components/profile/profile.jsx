@@ -2,9 +2,20 @@ import { useOutletContext } from 'react-router-dom';
 import UserPosts from './profileComponents/userPosts';
 import UserMessages from './profileComponents/userMessages';
 import './profile.css';
+import { useEffect } from 'react';
+import { fetchMyProfile } from '../../api';
 
 const Profile = () => {
-  const { myProfile } = useOutletContext();
+  const { myProfile, setMyProfile, token } = useOutletContext();
+
+  useEffect(() => {
+    if (token !== '') {
+      (async () => {
+        const profileValues = await fetchMyProfile(token);
+        setMyProfile(profileValues);
+      })();
+    }
+  }, []);
 
   return (
     <div id="profile">

@@ -12,21 +12,26 @@ const UserPosts = ({ myProfile }) => {
           ? ' posts'
           : ' post'}
       </p>
-      <div key="p._id" className="profile-column-body">
+      <div className="profile-column-body">
         {myProfile.posts[0] &&
           myProfile.posts.map((p) => {
+            console.log(p);
             const postDate = new Date(p.createdAt).toLocaleString();
-            return (
-              <div
-                key="p._id"
-                className="profile-post-link"
-                onClick={() => navigate(`/posts/${p._id}`)}
-              >
-                <h4>{p.title}</h4>
-                <p>{p.messages.length} messages received</p>
-                <p>Created: {postDate}</p>
-              </div>
-            );
+            {
+              return (
+                p.active && (
+                  <div
+                    key={p._id}
+                    className="profile-post-link"
+                    onClick={() => navigate(`/posts/${p._id}`)}
+                  >
+                    <h4>{p.title}</h4>
+                    <p>{p.messages.length} messages received</p>
+                    <p>Created: {postDate}</p>
+                  </div>
+                )
+              );
+            }
           })}
       </div>
     </div>

@@ -1,12 +1,18 @@
-import { useOutletContext, useParams } from 'react-router-dom';
+import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
 import './post.css';
 import { useEffect, useState } from 'react';
-import { fetchPosts, sendMessage } from '../../api';
+import { deletePost, fetchMyProfile, fetchPosts, sendMessage } from '../../api';
 import EditPost from './postComponents/editPost';
 
 const Post = () => {
-  const { displayedPosts, setDisplayedPosts, setAllPosts, myProfile, token } =
-    useOutletContext();
+  const {
+    displayedPosts,
+    setDisplayedPosts,
+    setAllPosts,
+    myProfile,
+    setMyProfile,
+    token,
+  } = useOutletContext();
   const { postId } = useParams();
   const post = displayedPosts.find((p) => p._id === postId);
 
@@ -22,6 +28,22 @@ const Post = () => {
     setAllPosts(newAllPosts.data.posts);
 
     setMessageContent('');
+  };
+
+  const navigate = useNavigate();
+
+  const handleDeletePost = async (postId, token) => {
+    try {
+      const data = await deletePost(postId, token);
+      console.log(data);
+      const profileValues = await fetchMyProfile(token);
+      setMyProfile(profileValues);
+      const newPostValues = await fetchPosts(myProfile, token);
+      setDisplayedPosts(newPostValues.data.posts);
+      navigate('/profile');
+    } catch (err) {
+      console.err(err);
+    }
   };
 
   if (post) {
@@ -56,7 +78,10 @@ const Post = () => {
             >
               Edit Post
             </button>
-            <button className="author-options-button delete">
+            <button
+              className="author-options-button delete"
+              onClick={() => handleDeletePost(postId, token)}
+            >
               Delete Post
             </button>
           </div>

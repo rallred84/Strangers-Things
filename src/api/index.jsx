@@ -165,3 +165,20 @@ export async function updatePost(
     console.error(err);
   }
 }
+
+export async function deletePost(postId, token) {
+  try {
+    const response = await fetch(`${BASE_URL}/posts/${postId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+}
