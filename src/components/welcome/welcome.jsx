@@ -8,12 +8,12 @@ const Welcome = () => {
   const { myProfile, setRegisterComponent } = useOutletContext();
 
   return (
-    <div>
+    <>
       {!myProfile._id && (
         <WelcomeScreenCover setRegisterComponent={setRegisterComponent} />
       )}
       <Posts />
-    </div>
+    </>
   );
 };
 
