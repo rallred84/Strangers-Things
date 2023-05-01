@@ -8,6 +8,7 @@ const Root = () => {
   const [displayedPosts, setDisplayedPosts] = useState([]);
   const [token, setToken] = useState('');
   const [myProfile, setMyProfile] = useState({});
+  const [registerComponent, setRegisterComponent] = useState(false);
 
   useEffect(() => {
     //If Token exists in local storage, set it to state
@@ -56,6 +57,8 @@ const Root = () => {
               setToken,
               myProfile,
               setMyProfile,
+              registerComponent,
+              setRegisterComponent,
             }}
           />
         </div>

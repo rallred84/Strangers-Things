@@ -1,11 +1,13 @@
 #create-post-form {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 500px;
+  margin-top: 10px;
 }
 
-#create-post-form > input {
-  margin-bottom: 5px;
+#create-post-form > input,
+#create-post-form > textarea {
+  margin-bottom: 10px;
 }
 
 .will-deliver {
@@ -16,4 +18,26 @@
 
 #create-post-form button {
   flex-grow: 1;
+}
+
+.create-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-content {
+  padding: 30px 80px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px gray;
+}
+
+.message-text {
+  height: 80px;
 }

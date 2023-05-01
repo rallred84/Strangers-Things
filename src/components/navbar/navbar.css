@@ -20,13 +20,20 @@
 #links a {
   text-decoration: none;
   margin-left: 20px;
-  font-size: 23px;
+  font-size: 18px;
   font-weight: bold;
   color: rgb(237, 28, 36);
 }
 
 #username-message {
   position: absolute;
+  font-size: 14px;
+  font-weight: bold;
+  color: red;
   top: 10px;
   right: 25px;
+}
+
+#logo h4 {
+  font-size: 14px;
 }

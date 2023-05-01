@@ -7,7 +7,7 @@ const Posts = () => {
   const { allPosts, displayedPosts, setDisplayedPosts, token } =
     useOutletContext();
   return (
-    <div>
+    <div className="post-body">
       <PostFilter
         displayedPosts={displayedPosts}
         setDisplayedPosts={setDisplayedPosts}
@@ -15,11 +15,7 @@ const Posts = () => {
       />
       <div id="post-list">
         {displayedPosts.map((post) => {
-          return (
-            <div key={post._id}>
-              <PostCards post={post} />
-            </div>
-          );
+          return <PostCards key={post._id} post={post} />;
         })}
       </div>
     </div>

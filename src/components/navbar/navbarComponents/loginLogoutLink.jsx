@@ -13,7 +13,7 @@ const LoginLogoutLink = ({ setToken, myProfile, setMyProfile }) => {
       Logout
     </Link>
   ) : (
-    <Link to={'/register'}>Login/Register</Link>
+    <Link to={'/login'}>Login/Register</Link>
   );
 };
 

@@ -5,11 +5,13 @@ import WelcomeScreenCover from './welcomeComponents/welcomeScreenCover';
 import { useEffect } from 'react';
 
 const Welcome = () => {
-  const { myProfile } = useOutletContext();
+  const { myProfile, setRegisterComponent } = useOutletContext();
 
   return (
     <div>
-      {!myProfile._id && <WelcomeScreenCover />}
+      {!myProfile._id && (
+        <WelcomeScreenCover setRegisterComponent={setRegisterComponent} />
+      )}
       <Posts />
     </div>
   );

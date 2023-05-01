@@ -30,50 +30,53 @@ const CreatePost = () => {
   }
 
   return (
-    <div>
-      <h3>Create Your Own Listing</h3>
-      <p>What are you wanting to sell?</p>
-      <form id="create-post-form" onSubmit={(e) => handleCreatePost(e)}>
-        <input
-          type="text"
-          value={itemName}
-          placeholder="Name of item *"
-          required
-          onChange={(e) => setItemName(e.target.value)}
-        />
-        <input
-          value={itemDescription}
-          type="text"
-          placeholder="Item Description *"
-          required
-          onChange={(e) => setItemDescription(e.target.value)}
-        />
-        <input
-          value={itemPrice}
-          type="text"
-          placeholder="Price ($$) *"
-          required
-          onChange={(e) => setItemPrice(e.target.value)}
-        />
-        <input
-          value={itemLocation}
-          type="text"
-          placeholder="Item Location"
-          onChange={(e) => setItemLocation(e.target.value)}
-        />
-        <div className="will-deliver">
-          <label htmlFor="will-deliver">Will Deliver?</label>
-          <select
-            name="will-deliver"
-            defaultValue={false}
-            onChange={(e) => setWillDeliverItem(e.target.value)}
-          >
-            <option value={true}>Yes</option>
-            <option value={false}>No</option>
-          </select>
-          <button>Create Your Listing!</button>
-        </div>
-      </form>
+    <div className="create-body">
+      <div className="create-content">
+        <h2>Create Your Own Listing</h2>
+        <p>What are you wanting to sell?</p>
+        <form id="create-post-form" onSubmit={(e) => handleCreatePost(e)}>
+          <input
+            type="text"
+            value={itemName}
+            placeholder="Name of item *"
+            required
+            onChange={(e) => setItemName(e.target.value)}
+          />
+          <textarea
+            className="message-text"
+            value={itemDescription}
+            type="text"
+            placeholder="Item Description *"
+            required
+            onChange={(e) => setItemDescription(e.target.value)}
+          />
+          <input
+            value={itemPrice}
+            type="text"
+            placeholder="Price ($$) *"
+            required
+            onChange={(e) => setItemPrice(e.target.value)}
+          />
+          <input
+            value={itemLocation}
+            type="text"
+            placeholder="Item Location"
+            onChange={(e) => setItemLocation(e.target.value)}
+          />
+          <div className="will-deliver">
+            <label htmlFor="will-deliver">Will Deliver?</label>
+            <select
+              name="will-deliver"
+              defaultValue={false}
+              onChange={(e) => setWillDeliverItem(e.target.value)}
+            >
+              <option value={true}>Yes</option>
+              <option value={false}>No</option>
+            </select>
+            <button>Create Your Listing!</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

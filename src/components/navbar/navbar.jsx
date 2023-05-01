@@ -13,7 +13,7 @@ const Navbar = ({ myProfile, setToken, setDisplayedPosts, allPosts }) => {
         <Link to="/">
           <img src={logo} />
         </Link>
-        <h4>Find SCARY good deals in your neighborhood!</h4>
+        <h4>Find SCARY good deals around the world!</h4>
       </div>
       <div id="links">
         <ViewListingsLink

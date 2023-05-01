@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import LoginForm from '../../login/loginComponents/loginForm';
 
-const WelcomeScreenCover = () => {
+const WelcomeScreenCover = ({ setRegisterComponent }) => {
   return (
     <div id="welcome-screen-cover">
       <div id="welcome-box">
@@ -17,8 +17,10 @@ const WelcomeScreenCover = () => {
         <h3>Not a Member yet?</h3>
         <p>
           <Link to="/posts">Browse as a guest </Link>or{' '}
-          <Link to="/register">register today</Link> to enjoy full access to all
-          of your Stranger's Things!
+          <Link to="/login" onClick={() => setRegisterComponent(true)}>
+            register today
+          </Link>{' '}
+          to enjoy full access to all of your Stranger's Things!
         </p>
       </div>
     </div>

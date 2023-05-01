@@ -1,4 +1,4 @@
-import { useOutletContext } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import './register.css';
 import { useEffect, useState } from 'react';
 import { registerUser } from '../../api';
@@ -9,6 +9,8 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [formError, setFormError] = useState('');
   const { token, setToken } = useOutletContext('');
+
+  const navigate = useNavigate();
 
   async function handleRegister(e) {
     e.preventDefault();
@@ -28,11 +30,12 @@ const Register = () => {
 
     setToken(result.data.token);
     localStorage.setItem('token', token);
+    navigate('/');
   }
 
   return (
-    <div>
-      <h2>Register Your Account to Get Started</h2>
+    <>
+      <h2 id="registration-title">Register Your Account to Get Started</h2>
       <form className="register-form" action="" onSubmit={handleRegister}>
         <input
           value={username}
@@ -55,7 +58,7 @@ const Register = () => {
         <button type="submit">Create Your Account!</button>
         <div>{formError}</div>
       </form>
-    </div>
+    </>
   );
 };
 

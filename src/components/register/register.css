@@ -1,10 +1,1 @@
-.register-form {
-  display: flex;
-  flex-direction: column;
-  color: red;
-  width: 250px;
-}
-
-.register-form > input {
-  margin-bottom: 5px;
-}
+/* Register form CSS found in login.css */

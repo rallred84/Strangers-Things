@@ -1,14 +1,35 @@
 .message-submit-button,
-.author-options-button {
-  display: block;
+.author-options-button,
+#edit-button,
+#edit-cancel-button {
   background-color: inherit;
   padding: 3px 15px;
   font-weight: bold;
 }
 
+.message-submit-button,
+.author-options-button {
+  display: block;
+}
+
 .message-submit-button {
   border: 1px solid #ed1c24;
   color: #ed1c24;
+}
+
+#edit-button {
+  color: green;
+  border: 2px solid green;
+}
+
+#edit-cancel-button {
+  color: red;
+  border: 2px solid red;
+}
+
+#edit-button,
+#edit-cancel-button {
+  margin: 10px 10px 0 0;
 }
 
 .edit {
@@ -28,8 +49,14 @@
   resize: none;
 }
 
+.message-list {
+  overflow: auto;
+  margin-top: 10px;
+  flex-grow: 100;
+}
+
 .post-message {
-  background-color: white;
+  background-color: #e4dede;
   box-shadow: 2px 2px 2px gray;
   margin: 10px 0;
   padding: 20px;
@@ -44,12 +71,14 @@
   font-size: 20px;
 }
 
-#author-options {
+.author-options {
+  margin-top: 10px;
   display: flex;
 }
 
-#edit-post-form {
-  width: 950px;
+#edit-post-form input,
+#edit-post-form textarea {
+  color: #eb5454;
 }
 
 .single-post-data,
@@ -60,12 +89,6 @@
 .post-title {
   text-decoration: underline;
   font-size: 28px;
-  font-weight: bold;
-  width: 100%;
-}
-
-.post-description {
-  font-size: 24px;
   font-weight: bold;
   width: 100%;
 }
@@ -88,20 +111,37 @@
   display: flex;
 }
 
-#edit-button,
-#edit-cancel-button {
-  background-color: inherit;
-  padding: 5px 10px;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 10px 10px 0 0;
+#single-post-view {
+  width: 100%;
+  width: 80%;
+  max-width: 800px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px gray;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+}
+#delete-screen-cover {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  background-color: rgba(241, 117, 117, 0.739);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#edit-button {
-  color: green;
-  border: 2px solid green;
-}
-#edit-cancel-button {
-  color: red;
-  border: 2px solid red;
+#delete-box {
+  background-color: white;
+  width: 500px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 3px solid black;
+  border-radius: 20px;
 }

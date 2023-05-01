@@ -79,7 +79,7 @@ const EditPost = ({
         </label>
         <textarea
           value={itemDescription}
-          className="post-description"
+          className="post-inputs"
           type="text"
           name="item-description"
           placeholder="Item Description *"

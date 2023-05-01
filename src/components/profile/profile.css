@@ -23,10 +23,13 @@
   flex: 1 1 0px;
   background-color: white;
   margin: 10px 7px;
+  border-radius: 5px;
 }
 
 .message-type-select {
   display: flex;
+  position: sticky;
+  top: 0;
 }
 
 .message-label-active:first-child {

@@ -20,13 +20,14 @@ const PostFilter = ({ allPosts, setDisplayedPosts }) => {
   return (
     <form onSubmit={(e) => filterPosts(e, searchValue)}>
       <input
+        className="search-value"
         value={searchValue}
         placeholder="Search through listings"
         id="search-value"
         type="text"
         onChange={(e) => setSearchValue(e.target.value)}
       />
-      <button>Search</button>
+      <button className="search-button">Search</button>
     </form>
   );
 };

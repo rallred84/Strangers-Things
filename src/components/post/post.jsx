@@ -3,6 +3,7 @@ import './post.css';
 import { useEffect, useState } from 'react';
 import { deletePost, fetchMyProfile, fetchPosts, sendMessage } from '../../api';
 import EditPost from './postComponents/editPost';
+import DeletePostScreenCover from './postComponents/deletePostScreenCover';
 
 const Post = () => {
   const {
@@ -19,6 +20,8 @@ const Post = () => {
   const [messageContent, setMessageContent] = useState('');
 
   const [editMode, setEditMode] = useState(false);
+
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
 
   const handleSubmit = async (e, postId, token, messageContent) => {
     e.preventDefault();
@@ -49,11 +52,19 @@ const Post = () => {
   if (post) {
     return (
       <div className="single-post-data" id="single-post-view">
+        {deleteConfirm && (
+          <DeletePostScreenCover
+            setDeleteConfirm={setDeleteConfirm}
+            handleDeletePost={handleDeletePost}
+            postId={postId}
+            token={token}
+          />
+        )}
         {!editMode && (
           <>
             <h1 className="post-title">{post.title}</h1>
             <p className="post-description post-attribute">Item Description:</p>
-            <p className="post-description">{post.description}</p>
+            <p>{post.description}</p>
             <p>
               <span className="post-attribute">Seller:</span>{' '}
               <span className="post-inputs">{post.author.username}</span>
@@ -71,7 +82,7 @@ const Post = () => {
           </>
         )}
         {myProfile._id && post.isAuthor && !editMode && (
-          <div id="author-options">
+          <div className="author-options">
             <button
               className="author-options-button edit"
               onClick={() => setEditMode(true)}
@@ -80,7 +91,7 @@ const Post = () => {
             </button>
             <button
               className="author-options-button delete"
-              onClick={() => handleDeletePost(postId, token)}
+              onClick={() => setDeleteConfirm(true)}
             >
               Delete Post
             </button>
@@ -117,21 +128,23 @@ const Post = () => {
             </button>
           </form>
         )}
-        {post.messages[0] &&
-          post.messages.map((m) => {
-            const timeStamp = new Date(m.createdAt).toLocaleString();
-            return (
-              <div className="post-message" key={m._id}>
-                <div className="message-content">
-                  <p>{m.content}</p>
+        <post className="message-list">
+          {post.messages[0] &&
+            post.messages.map((m) => {
+              const timeStamp = new Date(m.createdAt).toLocaleString();
+              return (
+                <div className="post-message" key={m._id}>
+                  <div className="message-content">
+                    <p>{m.content}</p>
+                  </div>
+                  <div className="message-info">
+                    <p>-{m.fromUser.username}</p>
+                    <p>{timeStamp}</p>
+                  </div>
                 </div>
-                <div className="message-info">
-                  <p>-{m.fromUser.username}</p>
-                  <p>{timeStamp}</p>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+        </post>
       </div>
     );
   }
