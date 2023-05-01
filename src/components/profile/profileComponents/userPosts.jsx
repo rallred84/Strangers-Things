@@ -1,20 +1,27 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const UserPosts = ({ myProfile }) => {
   const navigate = useNavigate();
 
+  const activePosts = myProfile.posts.filter((post) => post.active);
+
+  useEffect(() => {
+    console.log(activePosts);
+  }, []);
+
   return (
     <div className="profile-column">
       <h3>User Posts</h3>
       <p>
-        You have {myProfile.posts.length} active
-        {myProfile.posts.length === 0 || myProfile.posts.length > 1
+        You have {activePosts.length} active
+        {activePosts.length === 0 || activePosts.length > 1
           ? ' posts'
           : ' post'}
       </p>
       <div className="profile-column-body">
-        {myProfile.posts[0] &&
-          myProfile.posts.map((p) => {
+        {activePosts[0] &&
+          activePosts.map((p) => {
             console.log(p);
             const postDate = new Date(p.createdAt).toLocaleString();
             {

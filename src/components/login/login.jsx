@@ -12,7 +12,7 @@ const Login = () => {
       <div id="login-content">
         {!myProfile._id ? (
           <>
-            <h2>Login Now to Get to Find Great Deals!</h2>
+            <h2>Login Now to Find Great Deals!</h2>
             <p>Please enter your username and password</p>
             <LoginForm />
             {!registerComponent && (
